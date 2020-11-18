@@ -49,9 +49,9 @@ exports.config = {
     //
     capabilities: [{
         automationName: "UiAutomator2",
-        deviceName: "S9 Galaxy Device", // This is name of your Simulator
+        deviceName: "Custom Phone_1", // This is name of your Simulator
         platformName: "Android",
-        platformVersion: "10", // Android version of Simulator
+        platformVersion: "5.1", // Android version of Simulator
         orientation: "PORTRAIT",
         maxInstances: 1,
         app: join(process.cwd(), "/app-release.apk"),
@@ -60,8 +60,7 @@ exports.config = {
         noReset: true,
         newCommandTimeout: 240
     }],
-    port : 4723,
-    //
+    port: 4723,
     // ===================
     // Test Configurations
     // ===================
@@ -108,8 +107,8 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium'],
-    
+    services: ['chromedriver'],
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks.html
@@ -133,23 +132,24 @@ exports.config = {
     reporters: ['spec'],
 
 
-    
+
     //
     // Options to be passed to Jasmine.
     jasmineNodeOpts: {
         // Babel setup
         helpers: [require.resolve('@babel/register')],
+
         // Jasmine default timeout
         defaultTimeoutInterval: 60000,
         //
         // The Jasmine framework allows interception of each assertion in order to log the state of the application
         // or website depending on the result. For example, it is pretty handy to take a screenshot every time
         // an assertion fails.
-        expectationResultHandler: function(passed, assertion) {
+        expectationResultHandler: function (passed, assertion) {
             // do something
         }
     },
-    
+
     //
     // =====
     // Hooks
